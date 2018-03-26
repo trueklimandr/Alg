@@ -19,7 +19,7 @@ class basicSort
     {
         $aKeys = array_keys($a);
         if ($order == 1) {
-            for ($j = 1; $j < count($a) - 1; $j++) {
+            for ($j = 1; $j < count($a); $j++) {
                 $key = $a[$aKeys[$j]];
                 $i = $j - 1;
                 while ($i > -1 && $a[$aKeys[$i]] > $key) {
@@ -30,7 +30,7 @@ class basicSort
             }
             return $a;
         } elseif ($order == -1) {
-            for ($j = 1; $j < count($a) - 1; $j++) {
+            for ($j = 1; $j < count($a); $j++) {
                 $key = $a[$aKeys[$j]];
                 $i = $j - 1;
                 while ($i > -1 && $a[$aKeys[$i]] < $key) {
