@@ -11,5 +11,14 @@ require __DIR__ . '/vendor/autoload.php';
 use alg\sort\basicSort;
 
 $sort = new basicSort();
-$array = [55, '33', 1, 15, '23', 45, 33, 99, 50];
-var_dump($sort->insertionSort($array, +1));
+
+$array = range(0, 5000);
+shuffle($array);
+
+$time1 = microtime(true);
+print_r($sort->insertionSort($array, +1));
+$time2 = microtime(true);
+
+$t_ins_sort = round($time2-$time1, 2);
+
+echo "Spent $t_ins_sort sec";
