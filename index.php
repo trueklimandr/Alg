@@ -12,13 +12,21 @@ use alg\sort\basicSort;
 
 $sort = new basicSort();
 
-$array = range(0, 5000);
+$array = range(0, 10000);
 shuffle($array);
+$array1 = $array;
+$array2 = $array;
 
-$time1 = microtime(true);
-print_r($sort->insertionSort($array, +1));
-$time2 = microtime(true);
+$time11 = microtime(true);
+$sort->insertionSort($array1, +1);
+$time12 = microtime(true);
 
-$t_ins_sort = round($time2-$time1, 2);
+$time21 = microtime(true);
+$sort->selectionSort($array2);
+$time22 = microtime(true);
 
-echo "Spent $t_ins_sort sec";
+$t_ins_sort1 = round($time12-$time11, 3);
+$t_ins_sort2 = round($time12-$time11, 3);
+
+echo "Insertion sort spent $t_ins_sort1 sec\n";
+echo "Selection sort spent $t_ins_sort1 sec";
