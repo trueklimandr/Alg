@@ -12,7 +12,7 @@ use alg\sort\basicSort;
 
 $sort = new basicSort();
 
-$array = range(0, 10000);
+$array = range(0, 1000);
 shuffle($array);
 $array1 = $array;
 $array2 = $array;
@@ -22,11 +22,11 @@ $sort->insertionSort($array1, +1);
 $time12 = microtime(true);
 
 $time21 = microtime(true);
-$sort->selectionSort($array2);
+$sort->mergeSort($array2, 0, count($array2)-1);
 $time22 = microtime(true);
 
-$t_ins_sort1 = round($time12-$time11, 3);
-$t_ins_sort2 = round($time12-$time11, 3);
+$t_ins_sort1 = round($time12-$time11, 2);
+$t_ins_sort2 = round($time22-$time21, 2);
 
 echo "Insertion sort spent $t_ins_sort1 sec\n";
-echo "Selection sort spent $t_ins_sort1 sec";
+echo "Merge sort spent $t_ins_sort2 sec";
