@@ -66,4 +66,53 @@ class basicSort
         }
         return $a;
     }
+
+    /**
+     * @param array $a - sorting array
+     * @param int $p - first element for sort
+     * @param int $r - last element for sort
+     */
+    public function mergeSort(array &$a, int $p, int $r)
+    {
+        if ($p < $r) {
+            $q = ($p + $r)/2 - (($p + $r)%2)/2;
+            $this->mergeSort($a, $p, $q);
+            $this->mergeSort($a, $q + 1, $r);
+            $this->merge($a, $p, $q, $r);
+        }
+    }
+
+    /**
+     * It is used in mergeSort.
+     * Merge array from two half-parts: first part - a[p] .. a[q], second part - a[q+1] .. a[r].
+     *
+     * @param array $a
+     * @param int $p
+     * @param int $q
+     * @param int $r
+     */
+    public function merge(array &$a, int $p, int $q, int $r)
+    {
+        $n1 = $q - $p + 1;
+        $n2 = $r - $q;
+        for ($i = 0; $i < $n1; $i++) {
+            $L[$i] = $a[$p + $i];
+        }
+        for ($j = 0; $j < $n2; $j++) {
+            $R[$j] = $a[$q + $j + 1];
+        }
+        $L[$n1] = PHP_INT_MAX;
+        $R[$n2] = PHP_INT_MAX;
+        $i = 0;
+        $j = 0;
+        for ($k = $p; $k < $r + 1; $k++) {
+            if ($L[$i] <= $R[$j]) {
+                $a[$k] = $L[$i];
+                $i++;
+            } else {
+                $a[$k] = $R[$j];
+                $j++;
+            }
+        }
+    }
 }
