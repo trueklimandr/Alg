@@ -115,4 +115,17 @@ class basicSort
             }
         }
     }
+
+    /**
+     * @param $x
+     * @return float|int
+     */
+    public function factorial($x)
+    {
+        if ($x > 0) {
+            return $x * $this->factorial($x - 1);
+        } else {
+            return 1;
+        }
+    }
 }
